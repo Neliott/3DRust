@@ -13,10 +13,10 @@ impl Mesh {
         }
     }
     pub fn compute_trices(indices: Vec<Vector3Int>, vertices: Vec<Vector3>) -> Vec<Tris>{
-        indices.iter().map(|indices| Tris{
-            a: vertices[indices.x as usize],
-            b: vertices[indices.y as usize],
-            c: vertices[indices.z as usize]
-        }).collect()
+        indices.iter().map(|indices| Tris::new(
+            vertices[indices.x as usize],
+            vertices[indices.y as usize],
+            vertices[indices.z as usize]
+        )).collect()
     }
 }
