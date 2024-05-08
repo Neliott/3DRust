@@ -12,10 +12,10 @@ pub trait ScreenDrawable {
 }
 
 impl ScreenDrawable for WindowCanvas{
-    fn draw_line(&mut self, a: &Vector2Int, b: &Vector2Int){
+    /*fn draw_line(&mut self, a: &Vector2Int, b: &Vector2Int){
         self.set_draw_color(Color::RGB(0, 255, 255));
         self.draw_line(SDL_Point{x: a.x, y: a.y}, SDL_Point{x: b.x, y: b.y}).unwrap();
-    }
+    }*/
 
     fn draw_pixel(&mut self, a: &Vector2Int, color: Color){
         self.set_draw_color(color);
