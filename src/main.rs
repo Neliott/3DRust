@@ -12,6 +12,7 @@ use crate::rendering::renderer::Renderer;
 mod game;
 mod math_structs;
 mod rendering;
+mod color;
 
 fn main() -> Result<(), String> {
     let sdl_context = sdl2::init()?;

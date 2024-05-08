@@ -20,7 +20,7 @@ impl Renderer{
     pub fn add_mesh_renderer(&mut self, mesh_renderer: MeshRenderer){
         self.mesh_renderers.push(mesh_renderer);
     }
-    pub fn render(&self, mut drawable: &mut (impl ScreenDrawable)){
+    pub fn render(&self, drawable: &mut impl ScreenDrawable){
         drawable.clear();
         for mesh_renderer in self.mesh_renderers.iter(){
             for tris in mesh_renderer.get_tris().iter(){
@@ -29,7 +29,7 @@ impl Renderer{
         }
         drawable.present();
     }
-    fn draw_tris(&self, mut drawable: &mut (impl ScreenDrawable), tris: &Tris, mesh_renderer: &MeshRenderer){
+    fn draw_tris(&self, drawable: &mut impl ScreenDrawable, tris: &Tris, mesh_renderer: &MeshRenderer){
         let screen_width = drawable.size().0 as f32;
         let screen_height = drawable.size().1 as f32;
         let aspect_ratio = screen_width / screen_height;
@@ -40,7 +40,7 @@ impl Renderer{
         self.draw_screen_space_tris(drawable, &tris);
     }
 
-    fn draw_screen_space_tris(&self, mut drawable: &mut (impl ScreenDrawable), tris: &Tris){
+    fn draw_screen_space_tris(&self, drawable: &mut impl ScreenDrawable, tris: &Tris){
         let screen_width = drawable.size().0 as f32;
         let screen_height = drawable.size().1 as f32;
         let vect1 = Vector2Int::new((tris.a.x * screen_width / 2f32 + screen_width / 2f32) as i32, (tris.a.y * screen_height / 2f32 + screen_height / 2f32) as i32);
@@ -65,7 +65,7 @@ impl Renderer{
         let b1 = Renderer::sign(point, vect1, vect2) < 0.0;
         let b2 = Renderer::sign(point, vect2, vect3) < 0.0;
         let b3 = Renderer::sign(point, vect3, vect1) < 0.0;
-        return ((b1 == b2) && (b2 == b3));
+        return (b1 == b2) && (b2 == b3);
     }
 
     fn sign(p1: &Vector2Int, p2: &Vector2Int, p3: &Vector2Int) -> f32{

@@ -4,7 +4,7 @@ use sdl2::sys::SDL_Point;
 use crate::math_structs::vector2int::Vector2Int;
 
 pub trait ScreenDrawable {
-    fn draw_line(&mut self, a: &Vector2Int, b: &Vector2Int);
+    //fn draw_line(&mut self, a: &Vector2Int, b: &Vector2Int);
     fn draw_pixel(&mut self, a: &Vector2Int, color: Color);
     fn clear(&mut self);
     fn present(&mut self);
